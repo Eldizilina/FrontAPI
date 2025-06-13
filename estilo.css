@@ -1,3 +1,6 @@
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -141,3 +144,23 @@ footer {
         width: 100%;
     }
 }
+
+/* Estilo do botão de documentação no footer */
+.doc-button {
+    background: none;
+    border: none;
+    color: #3498db; /* Azul para destacar como link */
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s;
+}
+
+.doc-button:hover {
+    color: #2980b9; /* Azul mais escuro no hover */
+    text-decoration: underline;
+}
+

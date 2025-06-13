@@ -61,6 +61,7 @@ async function buscarPontosPorDistrito() {
         console.error('Erro completo:', error);
     }
 }
+
     
     function criarCardPontoTuristico(ponto) {
         const card = document.createElement('div');
@@ -95,4 +96,8 @@ async function buscarPontosPorDistrito() {
         
         return card;
     }
+
+    document.getElementById('btnDocumentacao').addEventListener('click', function() {
+    window.open('https://frontapi-4k3j.onrender.com/doc.html', '_blank');
+});
 });
