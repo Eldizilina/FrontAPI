@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Pontos Turísticos - Documentação</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+        }
+        
+        .endpoint-card {
+            border-left: 4px solid var(--secondary-color);
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        
+        .endpoint-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .get-method {
+            background-color: #e8f5e9;
+            border-left-color: #4caf50 !important;
+        }
+        
+        .post-method {
+            background-color: #e3f2fd;
+            border-left-color: #2196f3 !important;
+        }
+        
+        .method-badge {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge-get {
+            background-color: #4caf50;
+        }
+        
+        .code-block {
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            padding: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+        }
+        
+        .response-block {
+            background-color: #263238;
+            color: #f8f9fa;
+        }
+        
+        .param-table {
+            font-size: 0.9rem;
+        }
+        
+        .param-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-map-marked-alt me-2"></i>API Pontos Turísticos
+            </a>
+            <span class="text-white-50">v1.0.0</span>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-primary text-white py-5">
+        <div class="container text-center">
+            <h1 class="display-4">Documentação da API</h1>
+            <p class="lead">Explore os endpoints disponíveis para acessar dados de pontos turísticos</p>
+            <a href="https://api-webservices-1.onrender.com" class="btn btn-light btn-lg mt-3">
+                <i class="fas fa-external-link-alt me-2"></i>Acessar API
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <div class="card-header bg-dark text-white">
+                        <i class="fas fa-list me-2"></i>Endpoints
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="#listar-distritos" class="list-group-item list-group-item-action">Listar Distritos</a>
+                        <a href="#pontos-distrito" class="list-group-item list-group-item-action">Pontos por Distrito</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <i class="fas fa-info-circle me-2"></i>Informações
+                    </div>
+                    <div class="card-body">
+                        <h6>Base URL:</h6>
+                        <code>https://api-webservices-1.onrender.com/api</code>
+                        
+                        <h6 class="mt-3">Status:</h6>
+                        <span class="badge bg-success">Online</span>
+                        
+                        <h6 class="mt-3">Limites:</h6>
+                        <small>100 requisições/hora</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="col-md-9">
+                <!-- Introdução -->
+                <section class="mb-5">
+                    <h2 class="mb-4">Introdução</h2>
+                    <p>Esta API fornece acesso a informações sobre pontos turísticos de são tomé organizados por distritos. Todos os endpoints retornam dados no formato JSON.</p>
+                    
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Autenticação:</strong> Atualmente não é necessária autenticação para acessar os endpoints públicos.
+                    </div>
+                </section>
+                
+                <!-- Endpoint 1 -->
+                <section id="listar-distritos" class="mb-5">
+                    <h2 class="mb-4">Listar Distritos</h2>
+                    <div class="card endpoint-card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>
+                                <span class="badge method-badge badge-get me-2">GET</span>
+                                /distritos
+                            </span>
+                            <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#endpoint1-details">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="card-body collapse show" id="endpoint1-details">
+                            <p>Retorna a lista de todos os distrito que se encontram disponiveis na base de dados e a quantidade de pontos turisticos existentes neles.</p>
+                            
+                            <h5 class="mt-4">Exemplo de Requisição</h5>
+                            <div class="code-block">
+                                <code>fetch('https://api-webservices-1.onrender.com/api/distritos')
+    .then(response => response.json())
+    .then(data => console.log(data));</code>
+                            </div>
+                            
+                            <h5 class="mt-4">Resposta</h5>
+                            <div class="code-block response-block">
+                                <code class="text-white">{
+    [
+        {
+    "nome": "Agua grande",
+    "quantidade": 5
+  },
+  {
+    "nome": "Cantagalo",
+    "quantidade": 5
+  },
+  {
+    "nome": "Caue",
+    "quantidade": 10
+  },
+  {
+    "nome": "Lemba",
+    "quantidade": 3
+  },
+  {
+    "nome": "Lobata",
+    "quantidade": 3
+  },
+  {
+    "nome": "Me-zochi",
+    "quantidade": 3
+  },
+  {
+    "nome": "Rap",
+    "quantidade": 8
+  }
+    ]
+}</code>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Endpoint 2 -->
+                <section id="pontos-distrito" class="mb-5">
+                    <h2 class="mb-4">Pontos por Distrito</h2>
+                    <div class="card endpoint-card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>
+                                <span class="badge method-badge badge-get me-2">GET</span>
+                                /pontos-turisticos/distrito/{nome}
+                            </span>
+                            <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#endpoint2-details">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="card-body collapse show" id="endpoint2-details">
+                            <p>Retorna todos os pontos turísticos de um distrito específico.</p>
+                            
+                            <h5 class="mt-4">Parâmetros</h5>
+                            <table class="table param-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>distrito</th>
+                                        <th>Localização</th>
+                                        <th>Descrição</th>
+                                        <th>Cidade</th>
+                                        <th>Pontos Proximos</th>
+                                        <th>Imagem URL</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            
+                            <h5 class="mt-4">Exemplo de Requisição</h5>
+                            <div class="code-block">
+                                <code>fetch('https://api-webservices-1.onrender.com/api/pontos-turisticos/distrito/lobata')
+    .then(response => response.json())
+    .then(data => console.log(data));</code>
+                            </div>
+                            
+                            <h5 class="mt-4">Resposta</h5>
+                            <div class="code-block response-block">
+                                <code class="text-white">{
+    "data": [
+        {
+            "nome": "Lagoa azul",
+            "distrito": "Lobata"
+            "localizacao": "Entre Guadalupe e Plancas I",
+            "descricao": "Local ideal para mergulho e snorkeling com águas cristalinas azul-turquesa.",
+            "cidade": "Lobata",
+            "pontos_proximos": ["Neves","Praia dos Tamarindos"]
+             "imagem_url": "https://raw.githubusercontent.com/Eldizilina/Imagens_APIWebServices/refs/heads/main/imagens/Imagens%20API/Lagoa%20azul.webp"
+        },
+       {
+    "nome": "Roça Agostinho Neto",
+    "distrito": "lobata",
+    "localizacao": "Próximo a Guadalupe",
+    "descricao": "Antiga plantação de cacau com arquitetura colonial preservada.",
+    "cidade": "Guadalupe",
+    "pontos_proximos": [
+      "Lagoa Azul"
+    ],
+    "imagem_url": "https://raw.githubusercontent.com/Eldizilina/Imagens_APIWebServices/refs/heads/main/imagens/Imagens%20API/Agostinho_Neto.jpg"
+  },
+    ]
+}</code>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">API Pontos Turísticos &copy; 2025 - Todos os direitos reservados</p>
+            <small class="text-white-50">Desenvolvido com Node.js e Express</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Adicione interações JavaScript aqui se necessário
+    </script>
+</body>
+</html>

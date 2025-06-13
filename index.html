@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pontos Turísticos de São Tomé e Príncipe</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pontos Turísticos de São Tomé e Príncipe</h1>
+            <div class="search-container">
+                <select id="distritoSelect">
+                    <option value="">Selecione um distrito</option>
+                    <option value="agua grande">Água Grande</option>
+                    <option value="cantagalo">Cantagalo</option>
+                    <option value="caue">Caué</option>
+                    <option value="lemba">Lembá</option>
+                    <option value="lobata">Lobata</option>
+                    <option value="me-zochi">Mé-Zóchi</option>
+                    <option value="rap">Região Autonoma do Príncipe</option>
+                </select>
+                <button id="searchButton">Pesquisar</button>
+            </div>
+        </header>
+        
+        <main>
+            <div id="loading" class="loading" style="display: none;">
+                Carregando...
+            </div>
+            
+            <div id="resultsContainer">
+                <h2 id="resultsTitle"></h2>
+                <div id="pontosList" class="pontos-grid"></div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>© 2025 Pontos Turísticos São Tomé</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
